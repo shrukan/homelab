@@ -12,6 +12,7 @@ consisting of various containers.
 Following services are available
 
 * Audiobookshelf: (Audio-)book and comics management.
+* Sabnzbd: NZB downloader.
 
 ## Getting Started
 
