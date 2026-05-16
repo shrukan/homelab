@@ -30,7 +30,7 @@ tasks:
     cmds:
       - test -f init.sh && ./init.sh
 
-  service:up:
+  service:start:
     desc: Start a service
     requires:
       vars: [SERVICE]
@@ -75,6 +75,6 @@ tasks:
       - task: service:pull
         vars:
           SERVICE: "{{.SERVICE}}"
-      - task: service:up
+      - task: service:start
         vars:
           SERVICE: "{{.SERVICE}}"
