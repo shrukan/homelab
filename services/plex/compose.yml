@@ -13,5 +13,6 @@ services:
     devices:
       - /dev/dri:/dev/dri
     environment:
-      TZ: ${TZ}
+      - PLEX_CLAIM=${PLEX_CLAIM_TOKEN}
+      - TZ=${TZ}
     restart: unless-stopped
