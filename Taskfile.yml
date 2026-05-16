@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: "3"
+
+dotenv:
+  - .env.local
+
+vars:
+  SERVICE_DIR: services
+  SERVICES: [audiobookshelf]
+
+tasks:
+  _service:
+    internal: true
+    requires:
+      vars: [SERVICE]
+    dir: "{{.SERVICE_DIR}}/{{.SERVICE}}"
+    cmds:
+      - docker compose {{.COMMAND}} {{.CLI_ARGS}}
+
+  service:list:
+    desc: List all the services
+    cmd: echo "{{.SERVICES}}"
+
+  service:init:
+    desc: Execute the initialization script of the service
+    requires:
+      vars: [SERVICE]
+    dir: "{{.SERVICE_DIR}}/{{.SERVICE}}"
+    cmds:
+      - test -f init.sh && ./init.sh
+
+  service:up:
+    desc: Start a service
+    requires:
+      vars: [SERVICE]
+    deps:
+      - task: service:init
+        vars:
+          SERVICE: "{{.SERVICE}}"
+    cmds:
+      - task: _service
+        vars:
+          SERVICE: "{{.SERVICE}}"
+          COMMAND: up -d
+
+  service:down:
+    desc: Stop a service
+    requires:
+      vars: [SERVICE]
+    dir: "{{.SERVICE_DIR}}/{{.SERVICE}}"
+    cmds:
+      - task: _service
+        vars:
+          SERVICE: "{{.SERVICE}}"
+          COMMAND: down
+
+  service:pull:
+    desc: Pull the image of the service
+    requires:
+      vars: [SERVICE]
+    dir: "{{.SERVICE_DIR}}/{{.SERVICE}}"
+    cmds:
+      - task: _service
+        vars:
+          SERVICE: "{{.SERVICE}}"
+          COMMAND: pull
+
+  service:update:
+    desc: Pull image and restart container with the new image
+    requires:
+      vars: [SERVICE]
+    dir: "{{.SERVICE_DIR}}/{{.SERVICE}}"
+    cmds:
+      - task: service:pull
+        vars:
+          SERVICE: "{{.SERVICE}}"
+      - task: service:up
+        vars:
+          SERVICE: "{{.SERVICE}}"
