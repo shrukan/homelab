@@ -18,6 +18,6 @@ mkdir -p \
 	"${APPDATA_ROOT}/audiobookshelf/metadata"
 
 # Apply ownership (important for Docker permissions)
-chown -R "${PUID}:${PGID}" "${APPDATA_ROOT}/audiobookshelf"
+chown -R "${UID}:${GID}" "${APPDATA_ROOT}/audiobookshelf"
 
 echo "Done."
