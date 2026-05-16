@@ -8,6 +8,8 @@ services:
       - "${APPDATA_ROOT}/plex/PlexMediaServer:/config"
       - "${APPDATA_ROOT}/plex/transcode:/transcode"
       - "${MEDIA_ROOT}:/data"
+    devices:
+      - /dev/dri:/dev/dri
     environment:
       - PLEX_CLAIM=${PLEX_CLAIM_TOKEN}
       - TZ=${TZ}
