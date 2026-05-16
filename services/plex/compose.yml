@@ -4,8 +4,6 @@ services:
     container_name: plex
     user: "${UID}:${GID}"
     network_mode: host
-    ports:
-      - "${PLEX_PORT}:32400"
     volumes:
       - "${APPDATA_ROOT}/plex/PlexMediaServer:/config"
       - "${APPDATA_ROOT}/plex/transcode:/transcode"
