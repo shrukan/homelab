@@ -1,0 +1,21 @@
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:v2.34.0
+    container_name: audiobookshelf
+
+    ports:
+      - "${ABS_PORT}:80"
+
+    volumes:
+      - "${MEDIA_ROOT}/Books:/books"
+      - "${MEDIA_ROOT}/Audiobooks:/audiobooks"
+      - "${MEDIA_ROOT}/Comics:/comics"
+      - "${APPDATA_ROOT}/audiobookshelf/config:/config"
+      - "${APPDATA_ROOT}/audiobookshelf/metadata:/metadata"
+
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+
+    restart: unless-stopped
