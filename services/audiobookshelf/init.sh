@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Load environment variables
-source ../../.env.local
-
 echo "Initializing Audiobookshelf directories..."
 
 # Media directories (read-only library)
