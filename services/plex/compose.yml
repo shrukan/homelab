@@ -1,0 +1,17 @@
+services:
+  plex:
+    image: plexinc/pms-docker:1.43.1.10611-1e34174b1
+    container_name: plex
+    user: "${UID}:${GID}"
+    network_mode: host
+    ports:
+      - "${PLEX_PORT}:32400"
+    volumes:
+      - "${APPDATA_ROOT}/plex/PlexMediaServer:/config"
+      - "${APPDATA_ROOT}/plex/transcode:/transcode"
+      - "${MEDIA_ROOT}:/data"
+    devices:
+      - /dev/dri:/dev/dri
+    environment:
+      TZ: ${TZ}
+    restart: unless-stopped
