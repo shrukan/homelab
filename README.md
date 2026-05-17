@@ -13,6 +13,7 @@ Following services are available
 
 * Audiobookshelf: (Audio-)book and comics management.
 * Sabnzbd: NZB downloader.
+* Plex: Tool for watching movies and TV shows.
 
 ## Getting Started
 
