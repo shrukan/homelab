@@ -7,7 +7,7 @@ dotenv:
 
 vars:
   SERVICE_DIR: services
-  SERVICES: [audiobookshelf, sabnzbd, plex]
+  SERVICES: [audiobookshelf, sabnzbd, arr_stack, plex]
 
 tasks:
   _service:
