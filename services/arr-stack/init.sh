@@ -8,6 +8,7 @@ mkdir -p \
 	"${MEDIA_ROOT}/Movies" \
 	"${MEDIA_ROOT}/Movies (4K)" \
 	"${MEDIA_ROOT}/Animes" \
+	"${MEDIA_ROOT}/Family Videos" \
 	"${MEDIA_ROOT}/TV Shows"
 
 mkdir -p "${DOWNLOAD_ROOT}"
