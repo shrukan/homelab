@@ -11,8 +11,9 @@ consisting of various containers.
 
 Following services are available
 
-* Audiobookshelf: (Audio-)book and comics management.
+* Audiobookshelf: (Audio-)book and comic management.
 * Sabnzbd: NZB downloader.
+* Arr-Stack: Multiple Arr apps for tv-show and movie management.
 * Plex: Tool for watching movies and TV shows.
 
 ## Getting Started
