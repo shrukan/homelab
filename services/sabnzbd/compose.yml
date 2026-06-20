@@ -6,6 +6,7 @@ services:
     volumes:
       - "${APPDATA_ROOT}/sabnzbd/config:/config"
       - "${INCOMPLETE_DOWNLOAD_ROOT}:/incomplete-downloads"
+      - "${MEDIA_ROOT}/complete:/downloads"
     ports:
       - "${SABNZBD_PORT}:8080"
     environment:
