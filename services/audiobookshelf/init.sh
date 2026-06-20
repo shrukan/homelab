@@ -5,9 +5,9 @@ echo "Initializing Audiobookshelf directories..."
 
 # Media directories (read-only library)
 mkdir -p \
-	"${MEDIA_ROOT}/Books" \
-	"${MEDIA_ROOT}/Audiobooks" \
-	"${MEDIA_ROOT}/Comics"
+	"${MEDIA_ROOT}/Library/Books" \
+	"${MEDIA_ROOT}/Library/Audiobooks" \
+	"${MEDIA_ROOT}/Library/Comics"
 
 # App data directories (writable state)
 mkdir -p \

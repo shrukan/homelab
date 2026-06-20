@@ -5,13 +5,13 @@ echo "Initializing ARR stack directories..."
 
 # Media directories (read-only library)
 mkdir -p \
-	"${MEDIA_ROOT}/Movies" \
-	"${MEDIA_ROOT}/Movies (4K)" \
-	"${MEDIA_ROOT}/Animes" \
-	"${MEDIA_ROOT}/Family Videos" \
-	"${MEDIA_ROOT}/TV Shows"
+	"${MEDIA_ROOT}/Library/Movies" \
+	"${MEDIA_ROOT}/Library/Movies (4K)" \
+	"${MEDIA_ROOT}/Library/Animes" \
+	"${MEDIA_ROOT}/Library/Family Videos" \
+	"${MEDIA_ROOT}/Library/TV Shows"
 
-mkdir -p "${DOWNLOAD_ROOT}"
+mkdir -p "${MEDIA_ROOT}/complete"
 
 # App data directories (writable state)
 mkdir -p \
