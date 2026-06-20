@@ -6,7 +6,7 @@ services:
     volumes:
       - "${APPDATA_ROOT}/plex/PlexMediaServer:/config"
       - "${APPDATA_ROOT}/plex/transcode:/transcode"
-      - "${MEDIA_ROOT}:/data"
+      - "${MEDIA_ROOT}/Library:/data"
     devices:
       - /dev/dri:/dev/dri
     environment:

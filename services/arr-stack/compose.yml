@@ -8,7 +8,6 @@ services:
       - "TZ=${TZ}"
     volumes:
       - "${APPDATA_ROOT}/arr_stack/sonarr/config:/config"
-      - "${DOWNLOAD_ROOT}:/downloads"
       - "${MEDIA_ROOT}:/Media"
     ports:
       - "${SONARR_PORT}:8989"
@@ -22,7 +21,6 @@ services:
       - "TZ=${TZ}"
     volumes:
       - "${APPDATA_ROOT}/arr_stack/radarr/config:/config"
-      - "${DOWNLOAD_ROOT}:/downloads"
       - "${MEDIA_ROOT}:/Media"
     ports:
       - "${RADARR_PORT}:7878"
@@ -36,7 +34,6 @@ services:
       - "TZ=${TZ}"
     volumes:
       - "${APPDATA_ROOT}/arr_stack/radarr4k/config:/config"
-      - "${DOWNLOAD_ROOT}:/downloads"
       - "${MEDIA_ROOT}:/Media"
     ports:
       - "${RADARR4k_PORT}:7878"

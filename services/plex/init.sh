@@ -5,7 +5,7 @@ echo "Initializing Plex directories..."
 
 # Media directory (read-only library)
 mkdir -p \
-	"${MEDIA_ROOT}"
+	"${MEDIA_ROOT}/Library"
 
 # App data directories (writable state)
 mkdir -p \
