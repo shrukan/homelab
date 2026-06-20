@@ -5,7 +5,7 @@ echo "Initializing Sabnzbd directories..."
 
 # Media directories (read-only library)
 mkdir -p \
-	"${DOWNLOAD_ROOT}" \
+	"${MEDIA_ROOT}/Library" \
 	"${INCOMPLETE_DOWNLOAD_ROOT}"
 
 # App data directories (writable state)
