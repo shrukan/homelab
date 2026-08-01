@@ -1,0 +1,24 @@
+[Unit]
+Description=Homelab configuration backup
+Documentation=https://github.com/shrukan/homelab
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+# Adjust both paths to wherever the repository is checked out on this host.
+WorkingDirectory=/opt/homelab
+EnvironmentFile=/opt/homelab/.env.local
+ExecStart=/opt/homelab/scripts/backup.sh backup
+
+# Runs as root: it stops and starts containers, and reads appdata owned by
+# PUID/PGID.
+User=root
+
+# The snapshot is long and I/O heavy, so keep it out of the way of anything
+# still serving requests.
+Nice=10
+IOSchedulingClass=idle
+
+[Install]
+WantedBy=multi-user.target

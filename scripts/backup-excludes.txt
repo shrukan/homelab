@@ -1,0 +1,30 @@
+# Paths excluded from the backup. Everything here is either pure scratch or
+# regenerated automatically by the service after a restore.
+
+# Plex transcoder scratch space
+**/plex/transcode
+
+# Plex caches and diagnostics. Cache/ in particular grows to tens of GB.
+**/Plex Media Server/Cache
+**/Plex Media Server/Crash Reports
+**/Plex Media Server/Diagnostics
+**/Plex Media Server/Logs
+**/Plex Media Server/Updates
+
+# Plex artwork and thumbnails. Often the bulk of the config directory, and
+# Plex re-fetches it after a restore, though a large library takes a while.
+# Uncomment to trade a slower restore for a much smaller backup, worth doing
+# if the destination is metered.
+#**/Plex Media Server/Media
+#**/Plex Media Server/Metadata
+
+# Posters and fanart the arr apps re-download on demand
+**/MediaCover
+
+# Logs
+**/logs
+**/*.log
+**/*.log.*
+
+# Sabnzbd admin scratch
+**/sabnzbd/config/admin/*.tmp

@@ -66,6 +66,26 @@ tasks:
           SERVICE: "{{.SERVICE}}"
           COMMAND: pull
 
+  backup:
+    desc: Back up configuration data and the book libraries
+    cmd: ./scripts/backup.sh backup
+
+  backup:init:
+    desc: Create the restic repository (run once)
+    cmd: ./scripts/backup.sh init
+
+  backup:check:
+    desc: Verify the integrity of the backup repository
+    cmd: ./scripts/backup.sh check
+
+  backup:snapshots:
+    desc: List the available backup snapshots
+    cmd: ./scripts/backup.sh snapshots
+
+  backup:restore:
+    desc: Restore a snapshot, e.g. task backup:restore -- latest /tmp/restore
+    cmd: ./scripts/backup.sh restore {{.CLI_ARGS}}
+
   service:update:
     desc: Pull image and restart container with the new image
     requires:

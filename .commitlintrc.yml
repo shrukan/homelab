@@ -2,7 +2,7 @@
 extends:
   - "@commitlint/config-conventional"
 rules:
-  scope-enum: [2, "always", ["services", "task", "readme"]]
+  scope-enum: [2, "always", ["services", "task", "readme", "scripts"]]
   type-enum:
     - 2
     - always
