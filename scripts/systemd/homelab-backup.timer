@@ -1,0 +1,12 @@
+[Unit]
+Description=Run the homelab configuration backup nightly
+Documentation=https://github.com/shrukan/homelab
+
+[Timer]
+OnCalendar=*-*-* 04:00:00
+# Catch up after the host has been off
+Persistent=true
+RandomizedDelaySec=15m
+
+[Install]
+WantedBy=timers.target
