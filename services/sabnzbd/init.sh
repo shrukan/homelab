@@ -13,6 +13,6 @@ mkdir -p \
 	"${APPDATA_ROOT}/sabnzbd/config"
 
 # Apply ownership (important for Docker permissions)
-chown -R "${UID}:${GID}" "${APPDATA_ROOT}/sabnzbd"
+chown -R "${PUID}:${PGID}" "${APPDATA_ROOT}/sabnzbd"
 
 echo "Done."

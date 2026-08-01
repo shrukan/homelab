@@ -13,6 +13,6 @@ mkdir -p \
 	"${APPDATA_ROOT}/plex/transcode"
 
 # Apply ownership (important for Docker permissions)
-chown -R "${UID}:${GID}" "${APPDATA_ROOT}/plex"
+chown -R "${PUID}:${PGID}" "${APPDATA_ROOT}/plex"
 
 echo "Done."

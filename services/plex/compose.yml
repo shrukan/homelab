@@ -10,8 +10,8 @@ services:
     devices:
       - /dev/dri:/dev/dri
     environment:
-      - "PLEX_UID=${UID}"
-      - "PLEX_GID=${GID}"
+      - "PLEX_UID=${PUID}"
+      - "PLEX_GID=${PGID}"
       - "PLEX_CLAIM=${PLEX_CLAIM_TOKEN}"
       - "TZ=${TZ}"
     restart: unless-stopped
