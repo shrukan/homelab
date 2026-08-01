@@ -3,8 +3,8 @@ services:
     image: lscr.io/linuxserver/sonarr:4.0.17
     container_name: sonarr
     environment:
-      - "PUID=${UID}"
-      - "PGID=${GID}"
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
       - "TZ=${TZ}"
     volumes:
       - "${APPDATA_ROOT}/arr_stack/sonarr/config:/config"
@@ -16,8 +16,8 @@ services:
     image: lscr.io/linuxserver/radarr:6.1.1
     container_name: radarr
     environment:
-      - "PUID=${UID}"
-      - "PGID=${GID}"
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
       - "TZ=${TZ}"
     volumes:
       - "${APPDATA_ROOT}/arr_stack/radarr/config:/config"
@@ -29,8 +29,8 @@ services:
     image: lscr.io/linuxserver/radarr:6.1.1
     container_name: radarr4k
     environment:
-      - "PUID=${UID}"
-      - "PGID=${GID}"
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
       - "TZ=${TZ}"
     volumes:
       - "${APPDATA_ROOT}/arr_stack/radarr4k/config:/config"
@@ -42,8 +42,8 @@ services:
     image: lscr.io/linuxserver/prowlarr:2.3.5
     container_name: prowlarr
     environment:
-      - "PUID=${UID}"
-      - "PGID=${GID}"
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
       - "TZ=${TZ}"
     volumes:
       - "${APPDATA_ROOT}/arr_stack/prowlarr/config:/config"
@@ -53,7 +53,7 @@ services:
   seerr:
     image: ghcr.io/seerr-team/seerr:v3.2.0
     container_name: seerr
-    user: "${UID}:${GID}"
+    user: "${PUID}:${PGID}"
     environment:
       - "TZ=${TZ}"
     volumes:
@@ -65,8 +65,8 @@ services:
     image: ghcr.io/tautulli/tautulli:v2.17.1
     container_name: tautulli
     environment:
-      - "PUID=${UID}"
-      - "PGID=${GID}"
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
       - "TZ=${TZ}"
     ports:
       - "${TAUTULLI_PORT}:8181"
@@ -76,7 +76,7 @@ services:
   requestrr:
     image: thomst08/requestrr:v2.1.9
     container_name: requestrr
-    user: "${UID}:${GID}"
+    user: "${PUID}:${PGID}"
     environment:
       - "TZ=${TZ}"
     ports:
@@ -87,7 +87,7 @@ services:
   profilarr:
     image: santiagosayshey/profilarr:v1.1.4
     container_name: profilarr
-    user: "${UID}:${GID}"
+    user: "${PUID}:${PGID}"
     ports:
       - "${PROFILARR_PORT}:6868"
     volumes:
@@ -98,7 +98,7 @@ services:
   umlautadaptarr:
     image: pcjones/umlautadaptarr:0.7.5
     container_name: umlautadaptarr
-    user: "${UID}:${GID}"
+    user: "${PUID}:${PGID}"
     ports:
       - "${UMLAUTADAPTARR_PORT}:5006"
     environment:

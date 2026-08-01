@@ -26,6 +26,6 @@ mkdir -p \
 	"${APPDATA_ROOT}/arr_stack/profilarr/config"
 
 # Apply ownership (important for Docker permissions)
-chown -R "${UID}:${GID}" "${APPDATA_ROOT}/arr_stack"
+chown -R "${PUID}:${PGID}" "${APPDATA_ROOT}/arr_stack"
 
 echo "Done."
