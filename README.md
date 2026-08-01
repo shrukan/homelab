@@ -33,7 +33,9 @@ Task, but since a lot of the files are using environment variables it is necessa
    * Create a `.env.local` file from the `.env.example`, filling in your specific details.
    * Export the variables: `set -a; source .env.local; set +a`.
    * Navigate to each service directory in `services/`.
-   * Execute the `init.sh` script.
+   * Execute the `init.sh` script. It creates the directories and makes sure
+     they belong to `PUID:PGID`, asking for `sudo` only when the ownership is
+     actually wrong.
    * Start the service: `docker compose up -d`.
    * Alternatively, initialize and start each service with Task: `task service:start SERVICE="SERVICE_NAME"`.
 

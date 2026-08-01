@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# shellcheck source=../../scripts/lib.sh
+source "$(dirname "${BASH_SOURCE[0]}")/../../scripts/lib.sh"
+
 echo "Initializing Sabnzbd directories..."
 
 # Media directories (read-only library)
@@ -12,7 +15,7 @@ mkdir -p \
 mkdir -p \
 	"${APPDATA_ROOT}/sabnzbd/config"
 
-# Apply ownership (important for Docker permissions)
-chown -R "${PUID}:${PGID}" "${APPDATA_ROOT}/sabnzbd"
+# Apply ownership (important for Docker permissions), escalating only if needed
+ensure_owner "${APPDATA_ROOT}/sabnzbd"
 
 echo "Done."
