@@ -1,5 +1,6 @@
 # Paths excluded from the backup. Everything here is either pure scratch or
-# regenerated automatically by the service after a restore.
+# fetched again automatically after a restore, so none of it would have to be
+# recreated by hand.
 
 # Plex transcoder scratch space
 **/plex/transcode
@@ -11,12 +12,12 @@
 **/Plex Media Server/Logs
 **/Plex Media Server/Updates
 
-# Plex artwork and thumbnails. Often the bulk of the config directory, and
-# Plex re-fetches it after a restore, though a large library takes a while.
-# Uncomment to trade a slower restore for a much smaller backup, worth doing
-# if the destination is metered.
-#**/Plex Media Server/Media
-#**/Plex Media Server/Metadata
+# Plex artwork, thumbnails and downloaded metadata. Usually the bulk of the
+# config directory and all of it is re-fetched on demand. Nothing personal
+# lives here: watch history, collections and ratings are in the library
+# database under Plug-in Support, which is backed up.
+**/Plex Media Server/Media
+**/Plex Media Server/Metadata
 
 # Posters and fanart the arr apps re-download on demand
 **/MediaCover
