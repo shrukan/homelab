@@ -104,13 +104,13 @@ services:
     environment:
       - "TZ=${TZ}"
       - "SONARR__ENABLED=true"
-      - "SONARR__HOST=${HOST}:${SONARR_PORT}"
+      - "SONARR__HOST=http://sonarr:8989"
       - "SONARR__APIKEY=${SONARR_API_KEY}"
       - "RADARR__0__ENABLED=true"
-      - "RADARR__0__HOST=${HOST}:${RADARR_PORT}"
+      - "RADARR__0__HOST=http://radarr:7878"
       - "RADARR__0__APIKEY=${RADARR_API_KEY}"
       - "RADARR__1__ENABLED=true"
-      - "RADARR__1__HOST=${HOST}:${RADARR4k_PORT}"
+      - "RADARR__1__HOST=http://radarr4k:7878"
       - "RADARR__1__APIKEY=${RADARR4k_API_KEY}"
     restart: unless-stopped
   # huntarr:
