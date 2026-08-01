@@ -28,7 +28,7 @@ tasks:
       vars: [SERVICE]
     dir: "{{.SERVICE_DIR}}/{{.SERVICE}}"
     cmds:
-      - test -f init.sh && ./init.sh
+      - '[ ! -f init.sh ] || ./init.sh'
 
   service:start:
     desc: Start a service
