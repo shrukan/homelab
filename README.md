@@ -19,7 +19,7 @@ Following services are available
 ## Getting Started
 
 This repository uses Task as a command runner. It is possible to deploy and execute all the scripts without using
-Task, but since a lot of the files are using environment variables it is necessary to source the `env.local` file beforehand.
+Task, but since a lot of the files are using environment variables it is necessary to export the `.env.local` file beforehand.
 
 1. **Clone the Repository:**
 
@@ -30,7 +30,7 @@ Task, but since a lot of the files are using environment variables it is necessa
 
 2. **Deploy Services:**
    * Create a `.env.local` file from the `.env.example`, filling in your specific details.
-   * Source the file `source .env.local`.
+   * Export the variables: `set -a; source .env.local; set +a`.
    * Navigate to each service directory in `services/`.
    * Execute the `init.sh` script.
    * Start the service: `docker compose up -d`.
