@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Backs up the data that cannot be re-downloaded: service configuration
-# (databases, settings, watch history) and the book/audiobook libraries.
-# Films and TV are deliberately excluded, they are replaceable.
+# Backs up only what would have to be put back by hand: the files that were
+# collected manually, such as the books and audiobooks, and the state each
+# application built up over time, such as its settings, indexers, quality
+# profiles, watch history and requests.
+#
+# Anything a service fetches or generates by itself is left out, however long
+# it takes to come back. That covers films and TV, artwork, thumbnails,
+# transcoder scratch and logs.
 #
 # Containers are stopped for the duration of the snapshot. The arr apps,
 # Plex and Tautulli all keep their state in SQLite, and copying those files

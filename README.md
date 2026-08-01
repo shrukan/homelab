@@ -39,11 +39,17 @@ Task, but since a lot of the files are using environment variables it is necessa
 
 ## Backups
 
-Backups cover the data that cannot simply be downloaded again: the service
-configuration under `APPDATA_ROOT` (databases, settings, watch history), the
-`.env.local` file, and the `Books`, `Audiobooks` and `Comics` libraries. Films
-and TV shows are excluded, as are transcoder scratch space, logs and the
-artwork caches that each service regenerates on its own.
+The rule is simple: back up only what would have to be put back by hand.
+
+That means the files collected manually, the `Books`, `Audiobooks` and `Comics`
+libraries, and the state each application built up over time under
+`APPDATA_ROOT`: its settings, indexers, quality profiles, watch history and
+requests. The `.env.local` file is included too, since it is gitignored and
+therefore usually exists nowhere else.
+
+Everything a service fetches or generates by itself is left out, however long
+it takes to come back. Films and TV shows can be downloaded again, and artwork,
+thumbnails, transcoder scratch and logs are all rebuilt on demand.
 
 [restic](https://restic.net/) does the work, so snapshots are encrypted and
 deduplicated. The destination is just the `RESTIC_REPOSITORY` URL, which can be
