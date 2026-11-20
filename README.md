@@ -29,15 +29,24 @@ Task, but since a lot of the files are using environment variables it is necessa
     cd homelab 
     ```
 
-2. **Deploy Services:**
-   * Create a `.env.local` file from the `.env.example`, filling in your specific details.
-   * Export the variables: `set -a; source .env.local; set +a`.
-   * Navigate to each service directory in `services/`.
-   * Execute the `init.sh` script. It creates the directories and makes sure
-     they belong to `PUID:PGID`, asking for `sudo` only when the ownership is
-     actually wrong.
-   * Start the service: `docker compose up -d`.
-   * Alternatively, initialize and start each service with Task: `task service:start SERVICE="SERVICE_NAME"`.
+2. **Configure:** create `.env.local` from `.env.example`. Only the
+   *Required* block has to be filled in: `PUID`, `PGID` and the three root
+   directories. Everything else has a default, shown commented out; uncomment
+   a line only to change it. A missing required value stops `docker compose`
+   with a message naming it, instead of mounting an empty path.
+
+3. **Initialize each service once:** `task service:init SERVICE="SERVICE_NAME"`.
+   It creates the directories and makes sure they belong to `PUID:PGID`,
+   asking for `sudo` only when the ownership is actually wrong. Run it again
+   only after moving or restoring a service's directories; `service:start`
+   does not repeat it, since checking a large tree like Plex's metadata on
+   every start is slow.
+
+4. **Start:** `task service:start SERVICE="SERVICE_NAME"`.
+
+Without Task, export the variables first (`set -a; source .env.local; set +a`),
+then run `./init.sh` once and `docker compose up -d` in the service's
+directory under `services/`.
 
 ## Backups
 
