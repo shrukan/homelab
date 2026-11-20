@@ -2,13 +2,13 @@ services:
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:5.0.3
     container_name: sabnzbd
-    user: "${PUID}:${PGID}"
+    user: "${PUID:?set PUID, see .env.example}:${PGID:?set PGID, see .env.example}"
     volumes:
-      - "${APPDATA_ROOT}/sabnzbd/config:/config"
-      - "${INCOMPLETE_DOWNLOAD_ROOT}:/incomplete-downloads"
-      - "${MEDIA_ROOT}:/Media"
+      - "${APPDATA_ROOT:?set APPDATA_ROOT, see .env.example}/sabnzbd/config:/config"
+      - "${INCOMPLETE_DOWNLOAD_ROOT:?set INCOMPLETE_DOWNLOAD_ROOT, see .env.example}:/incomplete-downloads"
+      - "${MEDIA_ROOT:?set MEDIA_ROOT, see .env.example}:/Media"
     ports:
-      - "${SABNZBD_PORT}:8080"
+      - "${SABNZBD_PORT:-8080}:8080"
     environment:
-      TZ: ${TZ}
+      TZ: ${TZ:-Etc/UTC}
     restart: unless-stopped

@@ -3,115 +3,115 @@ services:
     image: lscr.io/linuxserver/sonarr:4.0.17
     container_name: sonarr
     environment:
-      - "PUID=${PUID}"
-      - "PGID=${PGID}"
-      - "TZ=${TZ}"
+      - "PUID=${PUID:?set PUID, see .env.example}"
+      - "PGID=${PGID:?set PGID, see .env.example}"
+      - "TZ=${TZ:-Etc/UTC}"
     volumes:
-      - "${APPDATA_ROOT}/arr_stack/sonarr/config:/config"
-      - "${MEDIA_ROOT}:/Media"
+      - "${APPDATA_ROOT:?set APPDATA_ROOT, see .env.example}/arr_stack/sonarr/config:/config"
+      - "${MEDIA_ROOT:?set MEDIA_ROOT, see .env.example}:/Media"
     ports:
-      - "${SONARR_PORT}:8989"
+      - "${SONARR_PORT:-8989}:8989"
     restart: unless-stopped
   radarr:
     image: lscr.io/linuxserver/radarr:6.1.1
     container_name: radarr
     environment:
-      - "PUID=${PUID}"
-      - "PGID=${PGID}"
-      - "TZ=${TZ}"
+      - "PUID=${PUID:?set PUID, see .env.example}"
+      - "PGID=${PGID:?set PGID, see .env.example}"
+      - "TZ=${TZ:-Etc/UTC}"
     volumes:
-      - "${APPDATA_ROOT}/arr_stack/radarr/config:/config"
-      - "${MEDIA_ROOT}:/Media"
+      - "${APPDATA_ROOT:?set APPDATA_ROOT, see .env.example}/arr_stack/radarr/config:/config"
+      - "${MEDIA_ROOT:?set MEDIA_ROOT, see .env.example}:/Media"
     ports:
-      - "${RADARR_PORT}:7878"
+      - "${RADARR_PORT:-7878}:7878"
     restart: unless-stopped
   radarr4k:
     image: lscr.io/linuxserver/radarr:6.1.1
     container_name: radarr4k
     environment:
-      - "PUID=${PUID}"
-      - "PGID=${PGID}"
-      - "TZ=${TZ}"
+      - "PUID=${PUID:?set PUID, see .env.example}"
+      - "PGID=${PGID:?set PGID, see .env.example}"
+      - "TZ=${TZ:-Etc/UTC}"
     volumes:
-      - "${APPDATA_ROOT}/arr_stack/radarr4k/config:/config"
-      - "${MEDIA_ROOT}:/Media"
+      - "${APPDATA_ROOT:?set APPDATA_ROOT, see .env.example}/arr_stack/radarr4k/config:/config"
+      - "${MEDIA_ROOT:?set MEDIA_ROOT, see .env.example}:/Media"
     ports:
-      - "${RADARR4k_PORT}:7878"
+      - "${RADARR4k_PORT:-7879}:7878"
     restart: unless-stopped
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:2.3.5
     container_name: prowlarr
     environment:
-      - "PUID=${PUID}"
-      - "PGID=${PGID}"
-      - "TZ=${TZ}"
+      - "PUID=${PUID:?set PUID, see .env.example}"
+      - "PGID=${PGID:?set PGID, see .env.example}"
+      - "TZ=${TZ:-Etc/UTC}"
     volumes:
-      - "${APPDATA_ROOT}/arr_stack/prowlarr/config:/config"
+      - "${APPDATA_ROOT:?set APPDATA_ROOT, see .env.example}/arr_stack/prowlarr/config:/config"
     ports:
-      - "${PROWLARR_PORT}:9696"
+      - "${PROWLARR_PORT:-9696}:9696"
     restart: unless-stopped
   seerr:
     image: ghcr.io/seerr-team/seerr:v3.2.0
     container_name: seerr
-    user: "${PUID}:${PGID}"
+    user: "${PUID:?set PUID, see .env.example}:${PGID:?set PGID, see .env.example}"
     environment:
-      - "TZ=${TZ}"
+      - "TZ=${TZ:-Etc/UTC}"
     volumes:
-      - "${APPDATA_ROOT}/arr_stack/seerr/config:/app/config"
+      - "${APPDATA_ROOT:?set APPDATA_ROOT, see .env.example}/arr_stack/seerr/config:/app/config"
     ports:
-      - "${SEERR_PORT}:5055"
+      - "${SEERR_PORT:-5055}:5055"
     restart: unless-stopped
   tautulli:
     image: ghcr.io/tautulli/tautulli:v2.17.1
     container_name: tautulli
     environment:
-      - "PUID=${PUID}"
-      - "PGID=${PGID}"
-      - "TZ=${TZ}"
+      - "PUID=${PUID:?set PUID, see .env.example}"
+      - "PGID=${PGID:?set PGID, see .env.example}"
+      - "TZ=${TZ:-Etc/UTC}"
     ports:
-      - "${TAUTULLI_PORT}:8181"
+      - "${TAUTULLI_PORT:-8181}:8181"
     volumes:
-      - "${APPDATA_ROOT}/arr_stack/tautulli/config:/config"
+      - "${APPDATA_ROOT:?set APPDATA_ROOT, see .env.example}/arr_stack/tautulli/config:/config"
     restart: unless-stopped
   requestrr:
     image: thomst08/requestrr:v2.1.9
     container_name: requestrr
-    user: "${PUID}:${PGID}"
+    user: "${PUID:?set PUID, see .env.example}:${PGID:?set PGID, see .env.example}"
     environment:
-      - "TZ=${TZ}"
+      - "TZ=${TZ:-Etc/UTC}"
     ports:
-      - "${REQUESTRR_PORT}:4545"
+      - "${REQUESTRR_PORT:-4545}:4545"
     volumes:
-      - "${APPDATA_ROOT}/arr_stack/requestrr/config:/root/config"
+      - "${APPDATA_ROOT:?set APPDATA_ROOT, see .env.example}/arr_stack/requestrr/config:/root/config"
     restart: unless-stopped
   profilarr:
     image: santiagosayshey/profilarr:v1.1.4
     container_name: profilarr
-    user: "${PUID}:${PGID}"
+    user: "${PUID:?set PUID, see .env.example}:${PGID:?set PGID, see .env.example}"
     ports:
-      - "${PROFILARR_PORT}:6868"
+      - "${PROFILARR_PORT:-6868}:6868"
     volumes:
-      - "${APPDATA_ROOT}/arr_stack/profilarr/config:/config"
+      - "${APPDATA_ROOT:?set APPDATA_ROOT, see .env.example}/arr_stack/profilarr/config:/config"
     environment:
-      - "TZ=${TZ}"
+      - "TZ=${TZ:-Etc/UTC}"
     restart: unless-stopped
   umlautadaptarr:
     image: pcjones/umlautadaptarr:0.7.5
     container_name: umlautadaptarr
-    user: "${PUID}:${PGID}"
+    user: "${PUID:?set PUID, see .env.example}:${PGID:?set PGID, see .env.example}"
     ports:
-      - "${UMLAUTADAPTARR_PORT}:5006"
+      - "${UMLAUTADAPTARR_PORT:-5006}:5006"
     environment:
-      - "TZ=${TZ}"
+      - "TZ=${TZ:-Etc/UTC}"
       - "SONARR__ENABLED=true"
       - "SONARR__HOST=http://sonarr:8989"
-      - "SONARR__APIKEY=${SONARR_API_KEY}"
+      - "SONARR__APIKEY=${SONARR_API_KEY:-}"
       - "RADARR__0__ENABLED=true"
       - "RADARR__0__HOST=http://radarr:7878"
-      - "RADARR__0__APIKEY=${RADARR_API_KEY}"
+      - "RADARR__0__APIKEY=${RADARR_API_KEY:-}"
       - "RADARR__1__ENABLED=true"
       - "RADARR__1__HOST=http://radarr4k:7878"
-      - "RADARR__1__APIKEY=${RADARR4k_API_KEY}"
+      - "RADARR__1__APIKEY=${RADARR4k_API_KEY:-}"
     restart: unless-stopped
   # huntarr:
   #   image: huntarr/huntarr:latest

@@ -4,14 +4,14 @@ services:
     container_name: plex
     network_mode: host
     volumes:
-      - "${APPDATA_ROOT}/plex/PlexMediaServer:/config"
-      - "${APPDATA_ROOT}/plex/transcode:/transcode"
-      - "${MEDIA_ROOT}/Library:/data"
+      - "${APPDATA_ROOT:?set APPDATA_ROOT, see .env.example}/plex/PlexMediaServer:/config"
+      - "${APPDATA_ROOT:?set APPDATA_ROOT, see .env.example}/plex/transcode:/transcode"
+      - "${MEDIA_ROOT:?set MEDIA_ROOT, see .env.example}/Library:/data"
     devices:
       - /dev/dri:/dev/dri
     environment:
-      - "PLEX_UID=${PUID}"
-      - "PLEX_GID=${PGID}"
-      - "PLEX_CLAIM=${PLEX_CLAIM_TOKEN}"
-      - "TZ=${TZ}"
+      - "PLEX_UID=${PUID:?set PUID, see .env.example}"
+      - "PLEX_GID=${PGID:?set PGID, see .env.example}"
+      - "PLEX_CLAIM=${PLEX_CLAIM_TOKEN:-}"
+      - "TZ=${TZ:-Etc/UTC}"
     restart: unless-stopped
