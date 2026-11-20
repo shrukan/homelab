@@ -74,7 +74,7 @@ services:
       - "${APPDATA_ROOT:?set APPDATA_ROOT, see .env.example}/arr_stack/tautulli/config:/config"
     restart: unless-stopped
   requestrr:
-    image: thomst08/requestrr:v2.1.9
+    image: thomst08/requestrr:v2.1.10
     container_name: requestrr
     user: "${PUID:?set PUID, see .env.example}:${PGID:?set PGID, see .env.example}"
     environment:
