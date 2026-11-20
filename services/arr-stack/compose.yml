@@ -85,7 +85,7 @@ services:
       - "${APPDATA_ROOT:?set APPDATA_ROOT, see .env.example}/arr_stack/requestrr/config:/root/config"
     restart: unless-stopped
   profilarr:
-    image: santiagosayshey/profilarr:v1.1.4
+    image: santiagosayshey/profilarr:v1.1.5
     container_name: profilarr
     user: "${PUID:?set PUID, see .env.example}:${PGID:?set PGID, see .env.example}"
     ports:
