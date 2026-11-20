@@ -23,7 +23,7 @@ tasks:
     cmd: echo "{{.SERVICES}}"
 
   service:init:
-    desc: Execute the initialization script of the service
+    desc: Create a service's directories and fix their ownership (once, and after moving them)
     requires:
       vars: [SERVICE]
     dir: "{{.SERVICE_DIR}}/{{.SERVICE}}"
@@ -31,13 +31,9 @@ tasks:
       - '[ ! -f init.sh ] || ./init.sh'
 
   service:start:
-    desc: Start a service
+    desc: Start a service (run service:init once before the first start)
     requires:
       vars: [SERVICE]
-    deps:
-      - task: service:init
-        vars:
-          SERVICE: "{{.SERVICE}}"
     cmds:
       - task: _service
         vars:
