@@ -7,6 +7,8 @@ consisting of various containers.
 
 * `services/`: All service related files such as compose and initialization script.
 * `scripts/`: Maintenance scripts and the systemd units that schedule them.
+* `.github/dependabot.yml`: Proposes a pull request when a newer image version is
+  published. A new service directory has to be added to its list.
 
 ## Services
 

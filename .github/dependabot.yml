@@ -1,0 +1,16 @@
+# Proposes a pull request when a newer version of an image used in a compose
+# file is published. Images are pinned to exact tags, so nothing changes
+# without merging one of these.
+version: 2
+updates:
+  - package-ecosystem: "docker-compose"
+    # One entry per service directory; add new services here.
+    directories:
+      - "/services/arr-stack"
+      - "/services/audiobookshelf"
+      - "/services/plex"
+      - "/services/sabnzbd"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "chore(services)"
